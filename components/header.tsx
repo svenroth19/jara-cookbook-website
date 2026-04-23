@@ -3,7 +3,7 @@ import Link from 'next/link'
 export function Header() {
   return (
     <header
-      className="sticky top-0 z-50 w-full bg-[#6b1f2b]/95 backdrop-blur supports-[backdrop-filter]:bg-[#6b1f2b]/80"
+      className="sticky top-0 z-50 w-full bg-[#6b1f2b]/100 backdrop-blur supports-[backdrop-filter]:bg-[#6b1f2b]/80"
       style={{ borderBottom: '1px solid #ddd0c0' }}
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
@@ -16,7 +16,7 @@ export function Header() {
         <nav className="flex items-center gap-1">
           <Link
             href="/"
-            className="rounded-md px-4 py-2 text-sm font-medium text-[#8a7060] transition-colors hover:text-[#6b1f2b]"
+            className="rounded-md px-4 py-2 text-sm font-medium text-[#faf6f0] transition-colors hover:text-[#faf6f0]"
             style={{ minHeight: '44px', display: 'flex', alignItems: 'center' }}
           >
             Rezepte
