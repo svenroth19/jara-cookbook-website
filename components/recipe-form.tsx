@@ -116,6 +116,14 @@ export function RecipeForm({ recipe, onSuccess, onCancel }: RecipeFormProps) {
         <Field>
           <FieldLabel>Bild</FieldLabel>
           <div className="space-y-3">
+            <input
+              ref={fileInputRef}
+              type="file"
+              name="image"
+              accept="image/*"
+              className="hidden"
+              onChange={handleImageChange}
+            />
             {previewUrl ? (
               <div className="relative aspect-video w-full max-w-sm overflow-hidden rounded-lg border">
                 <Image
@@ -124,29 +132,33 @@ export function RecipeForm({ recipe, onSuccess, onCancel }: RecipeFormProps) {
                   fill
                   className="object-cover"
                 />
-                <Button
-                  type="button"
-                  variant="destructive"
-                  size="icon"
-                  className="absolute right-2 top-2"
-                  onClick={clearImage}
-                >
-                  <X className="h-4 w-4" />
-                </Button>
+                <div className="absolute right-2 top-2 flex gap-1">
+                  <Button
+                    type="button"
+                    variant="secondary"
+                    size="icon"
+                    onClick={() => fileInputRef.current?.click()}
+                  >
+                    <Upload className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="destructive"
+                    size="icon"
+                    onClick={clearImage}
+                  >
+                    <X className="h-4 w-4" />
+                  </Button>
+                </div>
               </div>
             ) : (
-              <label className="flex aspect-video w-full max-w-sm cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-muted-foreground/25 hover:border-muted-foreground/50 transition-colors">
+              <div
+                className="flex aspect-video w-full max-w-sm cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-muted-foreground/25 hover:border-muted-foreground/50 transition-colors"
+                onClick={() => fileInputRef.current?.click()}
+              >
                 <Upload className="h-8 w-8 text-muted-foreground mb-2" />
                 <span className="text-sm text-muted-foreground">Bild hochladen</span>
-                <input
-                  ref={fileInputRef}
-                  type="file"
-                  name="image"
-                  accept="image/*"
-                  className="hidden"
-                  onChange={handleImageChange}
-                />
-              </label>
+              </div>
             )}
           </div>
         </Field>
