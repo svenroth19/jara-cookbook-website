@@ -1,25 +1,15 @@
 import type { Metadata } from 'next'
-import { Playfair_Display, DM_Sans } from 'next/font/google'
+import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { Header } from '@/components/header'
-import { Footer } from '@/components/footer'
 import './globals.css'
 
-const playfair = Playfair_Display({ 
-  subsets: ['latin'],
-  variable: '--font-playfair',
-  display: 'swap',
-})
-
-const dmSans = DM_Sans({ 
-  subsets: ['latin'],
-  variable: '--font-dm-sans',
-  display: 'swap',
-})
+const _geist = Geist({ subsets: ["latin"] });
+const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Jara's Kochbuch",
-  description: 'Eine kuratierte Sammlung erlesener Rezepte',
+  description: 'Eine Sammlung leckerer Rezepte',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -46,13 +36,17 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="de" className={`${playfair.variable} ${dmSans.variable}`}>
-      <body className="font-sans antialiased min-h-screen flex flex-col bg-[#faf6f0]">
+    <html lang="de" className="bg-background">
+      <body className="font-sans antialiased min-h-screen flex flex-col">
         <Header />
         <main className="flex-1">
           {children}
         </main>
-        <Footer />
+        <footer className="border-t py-6 text-center text-sm text-muted-foreground">
+          <div className="container mx-auto px-4">
+            Jara&apos;s Kochbuch &copy; {new Date().getFullYear()}
+          </div>
+        </footer>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
