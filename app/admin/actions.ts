@@ -2,7 +2,7 @@
 
 import { revalidatePath } from 'next/cache'
 import { createClient } from '@/lib/supabase/server'
-import { put, del } from '@vercel/blob'
+import { del } from '@vercel/blob'
 import { buildImageUrl, getImageSrc } from '@/lib/image-utils'
 
 function generateSlug(title: string): string {
@@ -22,7 +22,7 @@ export async function createRecipe(formData: FormData) {
   const title = formData.get('title') as string
   const description = formData.get('description') as string
   const category = formData.get('category') as string
-  const imageFile = formData.get('image') as File | null
+  const uploadedImageUrl = formData.get('imageUrl') as string | null
   const focalX = parseFloat((formData.get('focalX') as string) || '0.5')
   const focalY = parseFloat((formData.get('focalY') as string) || '0.5')
 
@@ -32,16 +32,8 @@ export async function createRecipe(formData: FormData) {
 
   let image_url: string | null = null
 
-  if (imageFile && imageFile.size > 0) {
-    try {
-      const blob = await put(`recipes/${Date.now()}-${imageFile.name}`, imageFile, {
-        access: 'public',
-      })
-      image_url = buildImageUrl(blob.url, focalX, focalY)
-    } catch (error) {
-      console.error('Error uploading image:', error)
-      return { error: 'Fehler beim Hochladen des Bildes.' }
-    }
+  if (uploadedImageUrl) {
+    image_url = buildImageUrl(uploadedImageUrl, focalX, focalY)
   }
 
   const slug = generateSlug(title)
@@ -73,7 +65,7 @@ export async function updateRecipe(id: string, formData: FormData) {
   const title = formData.get('title') as string
   const description = formData.get('description') as string
   const category = formData.get('category') as string
-  const imageFile = formData.get('image') as File | null
+  const uploadedImageUrl = formData.get('imageUrl') as string | null
   const existingImageUrl = formData.get('existingImageUrl') as string | null
   const focalX = parseFloat((formData.get('focalX') as string) || '0.5')
   const focalY = parseFloat((formData.get('focalY') as string) || '0.5')
@@ -84,8 +76,8 @@ export async function updateRecipe(id: string, formData: FormData) {
 
   let image_url: string | null = null
 
-  if (imageFile && imageFile.size > 0) {
-    // Delete old image from blob storage (strip hash before calling del)
+  if (uploadedImageUrl) {
+    // Delete old image from blob storage before replacing
     const oldBlobUrl = getImageSrc(existingImageUrl)
     if (oldBlobUrl?.includes('blob.vercel-storage.com')) {
       try {
@@ -94,16 +86,7 @@ export async function updateRecipe(id: string, formData: FormData) {
         console.error('Error deleting old image:', error)
       }
     }
-
-    try {
-      const blob = await put(`recipes/${Date.now()}-${imageFile.name}`, imageFile, {
-        access: 'public',
-      })
-      image_url = buildImageUrl(blob.url, focalX, focalY)
-    } catch (error) {
-      console.error('Error uploading image:', error)
-      return { error: 'Fehler beim Hochladen des Bildes.' }
-    }
+    image_url = buildImageUrl(uploadedImageUrl, focalX, focalY)
   } else if (existingImageUrl) {
     // No new file — keep existing image but update focal point
     const baseUrl = getImageSrc(existingImageUrl)

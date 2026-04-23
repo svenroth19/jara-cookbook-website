@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useCallback } from 'react'
+import { upload } from '@vercel/blob/client'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -224,10 +225,23 @@ export function RecipeForm({ recipe, onSuccess, onCancel }: RecipeFormProps) {
     formData.set('focalX', focalX.toString())
     formData.set('focalY', focalY.toString())
 
-    // Override the file input value with the (possibly HEIC-converted) file
+    // Upload file directly from browser to Vercel Blob (bypasses serverless size limit)
     if (processedFile) {
-      formData.set('image', processedFile)
+      try {
+        const sanitizedName = processedFile.name.replace(/[^a-zA-Z0-9._-]/g, '_')
+        const blob = await upload(`recipes/${Date.now()}-${sanitizedName}`, processedFile, {
+          access: 'public',
+          handleUploadUrl: '/api/upload',
+        })
+        formData.set('imageUrl', blob.url)
+      } catch (err) {
+        console.error('Upload failed:', err)
+        setError('Fehler beim Hochladen des Bildes.')
+        setIsSubmitting(false)
+        return
+      }
     }
+    formData.delete('image')
 
     try {
       const result = recipe
