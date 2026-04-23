@@ -3,7 +3,7 @@ import Link from 'next/link'
 export function Header() {
   return (
     <header
-      className="sticky top-0 z-50 w-full bg-[#6b1f2b]/100 backdrop-blur supports-[backdrop-filter]:bg-[#6b1f2b]/80"
+      className="sticky top-0 z-50 w-full bg-[#6b1f2b] backdrop-blur supports-[backdrop-filter]:bg-[#6b1f2b]"
       style={{ borderBottom: '1px solid #ddd0c0' }}
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
