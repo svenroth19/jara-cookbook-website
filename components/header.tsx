@@ -4,13 +4,13 @@ import Link from 'next/link'
 import { useState } from 'react'
 
 const ABOUT_INFO = {
-  name: 'Jara Mustermann',
+  name: 'Jara Rech',
   about:
-    'Ich bin leidenschaftliche Hobbyköchin und teile hier meine liebsten Rezepte aus der ganzen Welt. Kochen ist für mich mehr als ein Hobby – es ist eine Art, Liebe auszudrücken und Menschen zusammenzubringen.',
-  instagram: '@jara.kochbuch',
-  phone: '+49 151 23456789',
-  email: 'jara@kochbuch.de',
-  ort: 'München, Deutschland',
+    '',
+  instagram: '@',
+  phone: '078 262 70 78',
+  email: '',
+  ort: 'Toffen, Schweiz',
 }
 
 export function Header() {
