@@ -1,21 +1,38 @@
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header
+      className="sticky top-0 z-50 w-full bg-[#faf6f0]/95 backdrop-blur supports-[backdrop-filter]:bg-[#faf6f0]/80"
+      style={{ borderBottom: '1px solid #ddd0c0' }}
+    >
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="text-2xl">📖</span>
-          <span className="font-bold text-xl">Jara&apos;s Kochbuch</span>
+        <Link href="/" className="group flex items-center">
+          <span className="font-display text-xl font-bold tracking-tight text-[#6b1f2b] transition-opacity group-hover:opacity-80">
+            Jara&apos;s Kochbuch
+          </span>
         </Link>
-        <nav className="flex items-center gap-4">
-          <Button variant="ghost" asChild>
-            <Link href="/">Rezepte</Link>
-          </Button>
-          <Button variant="outline" asChild>
-            <Link href="/admin">Verwalten</Link>
-          </Button>
+
+        <nav className="flex items-center gap-1">
+          <Link
+            href="/"
+            className="rounded-md px-4 py-2 text-sm font-medium text-[#8a7060] transition-colors hover:text-[#6b1f2b]"
+            style={{ minHeight: '44px', display: 'flex', alignItems: 'center' }}
+          >
+            Rezepte
+          </Link>
+          <Link
+            href="/admin"
+            className="rounded-md px-4 py-2 text-sm font-medium text-[#faf6f0] transition-colors hover:bg-[#4d1520]"
+            style={{
+              background: '#6b1f2b',
+              minHeight: '44px',
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            Verwalten
+          </Link>
         </nav>
       </div>
     </header>

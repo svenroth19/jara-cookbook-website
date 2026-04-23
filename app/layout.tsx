@@ -1,11 +1,20 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Playfair_Display, DM_Sans } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { Header } from '@/components/header'
 import './globals.css'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair',
+  weight: ['400', '500', '600', '700', '800', '900'],
+  style: ['normal', 'italic'],
+})
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  variable: '--font-dm-sans',
+})
 
 export const metadata: Metadata = {
   title: "Jara's Kochbuch",
@@ -37,12 +46,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de" className="bg-background">
-      <body className="font-sans antialiased min-h-screen flex flex-col">
+      <body
+        className={`${playfair.variable} ${dmSans.variable} font-sans antialiased min-h-screen flex flex-col`}
+      >
         <Header />
-        <main className="flex-1">
-          {children}
-        </main>
-        <footer className="border-t py-6 text-center text-sm text-muted-foreground">
+        <main className="flex-1">{children}</main>
+        <footer
+          className="py-8 text-center text-sm text-muted-foreground"
+          style={{ borderTop: '2px solid #6b1f2b' }}
+        >
           <div className="container mx-auto px-4">
             Jara&apos;s Kochbuch &copy; {new Date().getFullYear()}
           </div>
