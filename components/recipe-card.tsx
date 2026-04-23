@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { Recipe, categoryLabels } from '@/lib/types'
+import { getImageSrc, getObjectPosition } from '@/lib/image-utils'
 
 interface RecipeCardProps {
   recipe: Recipe
@@ -17,11 +18,12 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
         <div className="relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
           {recipe.image_url ? (
             <Image
-              src={recipe.image_url}
+              src={getImageSrc(recipe.image_url)!}
               alt={recipe.title}
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              style={{ objectPosition: getObjectPosition(recipe.image_url) }}
             />
           ) : (
             <div

@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
 import { categoryLabels, type Recipe } from '@/lib/types'
+import { getImageSrc, getObjectPosition } from '@/lib/image-utils'
 import { ArrowLeft } from 'lucide-react'
 
 interface RecipePageProps {
@@ -116,12 +117,13 @@ export default async function RecipePage({ params }: RecipePageProps) {
       >
         {typedRecipe.image_url ? (
           <Image
-            src={typedRecipe.image_url}
+            src={getImageSrc(typedRecipe.image_url)!}
             alt={typedRecipe.title}
             fill
             className="object-cover"
             sizes="100vw"
             priority
+            style={{ objectPosition: getObjectPosition(typedRecipe.image_url) }}
           />
         ) : (
           <div

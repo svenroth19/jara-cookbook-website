@@ -24,6 +24,7 @@ import {
 import { RecipeForm } from '@/components/recipe-form'
 import { deleteRecipe } from './actions'
 import { categoryLabels, type Recipe } from '@/lib/types'
+import { getImageSrc, getObjectPosition } from '@/lib/image-utils'
 import { Plus, Pencil, Trash2 } from 'lucide-react'
 
 interface AdminContentProps {
@@ -132,11 +133,12 @@ export function AdminContent({ recipes }: AdminContentProps) {
               <div className="relative h-14 w-14 flex-shrink-0 overflow-hidden rounded-lg">
                 {recipe.image_url ? (
                   <Image
-                    src={recipe.image_url}
+                    src={getImageSrc(recipe.image_url)!}
                     alt={recipe.title}
                     fill
                     className="object-cover"
                     sizes="56px"
+                    style={{ objectPosition: getObjectPosition(recipe.image_url) }}
                   />
                 ) : (
                   <div
