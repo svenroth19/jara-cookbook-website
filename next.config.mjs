@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    serverActionsBodySizeLimit: '128mb',
+  },
   typescript: {
     ignoreBuildErrors: true,
   },
