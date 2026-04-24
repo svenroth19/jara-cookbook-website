@@ -6,11 +6,11 @@ import { useState } from 'react'
 const ABOUT_INFO = {
   name: 'Jara Rech',
   about:
-    '',
+    'Ich habe dieses Kochbuch im Rahmen eines Schulprojekts erstellt. Kochen macht mir Spass, und ich probiere gerne neue Rezepte aus. Mit diesem Kochbuch möchte ich einfache und leckere Gerichte zeigen, die jeder nachkochen kann.',
   instagram: '@mycookingbookjararech',
   instagramUrl: 'https://www.instagram.com/mycookingbookjararech/',
   phone: '078 262 70 78',
-  email: '',
+  email: 'jara.rech@icloud.com',
   ort: 'Toffen, Schweiz',
 }
 
@@ -112,7 +112,13 @@ export function Header() {
               </div>
               <div>
                 <span className="font-semibold block mb-0.5" style={{ color: '#6b1f2b' }}>E-Mail-Adresse</span>
-                <span>{ABOUT_INFO.email}</span>
+                <a
+                  href={`mailto:${ABOUT_INFO.email}`}
+                  style={{ color: '#6b1f2b', textDecoration: 'underline' }}
+                  className="hover:opacity-70 transition-opacity"
+                >
+                  {ABOUT_INFO.email}
+                </a>
               </div>
               <div>
                 <span className="font-semibold block mb-0.5" style={{ color: '#6b1f2b' }}>Ort</span>
