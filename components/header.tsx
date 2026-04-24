@@ -7,7 +7,8 @@ const ABOUT_INFO = {
   name: 'Jara Rech',
   about:
     '',
-  instagram: '@',
+  instagram: '@mycookingbookjararech',
+  instagramUrl: 'https://www.instagram.com/mycookingbookjararech/',
   phone: '078 262 70 78',
   email: '',
   ort: 'Toffen, Schweiz',
@@ -95,7 +96,15 @@ export function Header() {
               </div>
               <div>
                 <span className="font-semibold block mb-0.5" style={{ color: '#6b1f2b' }}>Instagram</span>
-                <span>{ABOUT_INFO.instagram}</span>
+                <a
+                  href={ABOUT_INFO.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: '#6b1f2b', textDecoration: 'underline' }}
+                  className="hover:opacity-70 transition-opacity"
+                >
+                  {ABOUT_INFO.instagram}
+                </a>
               </div>
               <div>
                 <span className="font-semibold block mb-0.5" style={{ color: '#6b1f2b' }}>Telefonnummer</span>
