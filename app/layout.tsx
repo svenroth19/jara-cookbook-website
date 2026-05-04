@@ -1,19 +1,21 @@
 import type { Metadata } from 'next'
-import { Playfair_Display, DM_Sans } from 'next/font/google'
+import { Cormorant_Garamond, Lato } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { Header } from '@/components/header'
 import './globals.css'
 
-const playfair = Playfair_Display({
+const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
-  variable: '--font-playfair',
-  weight: ['400', '500', '600', '700', '800', '900'],
+  variable: '--font-cormorant',
+  weight: ['300', '400', '500', '600', '700'],
   style: ['normal', 'italic'],
 })
 
-const dmSans = DM_Sans({
+const lato = Lato({
   subsets: ['latin'],
-  variable: '--font-dm-sans',
+  variable: '--font-lato',
+  weight: ['300', '400', '700'],
+  style: ['normal', 'italic'],
 })
 
 export const metadata: Metadata = {
@@ -47,7 +49,7 @@ export default function RootLayout({
   return (
     <html lang="de" className="bg-background">
       <body
-        className={`${playfair.variable} ${dmSans.variable} font-sans antialiased min-h-screen flex flex-col`}
+        className={`${cormorant.variable} ${lato.variable} font-sans antialiased min-h-screen flex flex-col`}
       >
         <Header />
         <main className="flex-1">{children}</main>

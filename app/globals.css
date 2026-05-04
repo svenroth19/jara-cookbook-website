@@ -41,8 +41,8 @@
 }
 
 @theme inline {
-  --font-sans: var(--font-dm-sans), 'DM Sans', system-ui, sans-serif;
-  --font-display: var(--font-playfair), 'Playfair Display', Georgia, serif;
+  --font-sans: var(--font-lato), 'Lato', system-ui, sans-serif;
+  --font-display: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
   --font-mono: ui-monospace, monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -88,12 +88,16 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-size: 1rem;
+    line-height: 1.65;
+    letter-spacing: 0.01em;
   }
 }
 
 @layer utilities {
   .font-display {
     font-family: var(--font-display);
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
   }
 }
 

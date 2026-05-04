@@ -49,11 +49,11 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
 
           {/* Category badge */}
           <div
-            className="absolute left-3 top-3 rounded px-2.5 py-1 text-xs font-medium uppercase tracking-wide"
+            className="absolute left-3 top-3 rounded px-2.5 py-1 text-[0.68rem] font-bold uppercase"
             style={{
               background: 'rgba(250,246,240,0.92)',
               color: '#6b1f2b',
-              letterSpacing: '0.06em',
+              letterSpacing: '0.09em',
             }}
           >
             {categoryLabels[recipe.category]}
@@ -72,7 +72,7 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
         {/* Card body */}
         <div className="p-5">
           <h3
-            className="font-display text-lg font-semibold leading-snug text-balance transition-colors duration-200 group-hover:text-[#6b1f2b]"
+            className="font-display text-xl font-semibold leading-snug text-balance tracking-[-0.01em] transition-colors duration-200 group-hover:text-[#6b1f2b]"
             style={{ color: '#1c1410' }}
           >
             {recipe.title}

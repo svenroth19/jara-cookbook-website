@@ -161,11 +161,11 @@ export default async function RecipePage({ params }: RecipePageProps) {
         {/* Category label */}
         <div className="mb-5 text-center">
           <span
-            className="inline-block rounded px-3 py-1 text-xs font-medium uppercase"
+            className="inline-block rounded px-3 py-1 text-[0.68rem] font-bold uppercase"
             style={{
               background: '#f2ebe1',
               color: '#8a7060',
-              letterSpacing: '0.1em',
+              letterSpacing: '0.12em',
             }}
           >
             {categoryLabels[typedRecipe.category]}
@@ -174,8 +174,8 @@ export default async function RecipePage({ params }: RecipePageProps) {
 
         {/* Title */}
         <h1
-          className="font-display text-center font-bold leading-tight text-[#6b1f2b]"
-          style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}
+          className="font-display text-center font-bold leading-[1.1] tracking-[-0.02em] text-[#6b1f2b]"
+          style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)' }}
         >
           {typedRecipe.title}
         </h1>
@@ -195,7 +195,7 @@ export default async function RecipePage({ params }: RecipePageProps) {
             {section.type === 'ingredients' && (
               <div>
                 <h2
-                  className="font-display mb-6 text-2xl font-semibold"
+                  className="font-display mb-6 text-[1.75rem] font-semibold tracking-[-0.01em]"
                   style={{ color: '#1c1410' }}
                 >
                   Zutaten
@@ -222,7 +222,7 @@ export default async function RecipePage({ params }: RecipePageProps) {
             {section.type === 'instructions' && (
               <div>
                 <h2
-                  className="font-display mb-6 text-2xl font-semibold"
+                  className="font-display mb-6 text-[1.75rem] font-semibold tracking-[-0.01em]"
                   style={{ color: '#1c1410' }}
                 >
                   Zubereitung
