@@ -25,7 +25,7 @@ export function Header() {
       >
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <Link href="/" className="group flex items-center">
-            <span className="font-display text-[1.3rem] font-semibold italic tracking-[0.02em] text-[#faf6f0] transition-opacity group-hover:opacity-80">
+            <span className="font-display text-[1.3rem] font-bold italic tracking-[0.02em] text-[#faf6f0] transition-opacity group-hover:opacity-80">
               Jara&apos;s Kochbuch
             </span>
           </Link>

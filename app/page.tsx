@@ -60,14 +60,14 @@ export default async function HomePage({ searchParams }: HomePageProps) {
         style={{ background: '#faf6f0' }}
       >
         <h1
-          className="hero-title font-display font-semibold italic leading-[1.1] tracking-[0.01em] text-[#6b1f2b]"
+          className="hero-title font-display font-bold italic leading-[1.1] tracking-[0.01em] text-[#6b1f2b]"
           style={{ fontSize: 'clamp(3.25rem, 9vw, 6.5rem)' }}
         >
           Jara&apos;s Kochbuch
         </h1>
 
         <p
-          className="hero-tagline mt-6 font-display font-light italic tracking-[0.04em] text-[#8a7060]"
+          className="hero-tagline mt-6 font-display font-normal italic tracking-[0.04em] text-[#8a7060]"
           style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.4rem)' }}
         >
           Köstliche Rezepte für jeden Anlass

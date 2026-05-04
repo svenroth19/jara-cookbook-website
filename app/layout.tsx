@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
-import { Playfair_Display, Lato } from 'next/font/google'
+import { Cormorant_Garamond, Lato } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { Header } from '@/components/header'
 import './globals.css'
 
-const playfair = Playfair_Display({
+const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
-  variable: '--font-playfair',
-  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-cormorant',
+  weight: ['400', '500', '600', '700'],
   style: ['normal', 'italic'],
 })
 
@@ -47,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="de" className={`bg-background ${playfair.variable} ${lato.variable}`}>
+    <html lang="de" className={`bg-background ${cormorant.variable} ${lato.variable}`}>
       <body
         className="font-sans antialiased min-h-screen flex flex-col"
       >
