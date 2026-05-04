@@ -72,7 +72,7 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
         {/* Card body */}
         <div className="p-5">
           <h3
-            className="font-display text-xl font-medium leading-snug text-balance tracking-[-0.01em] transition-colors duration-200 group-hover:text-[#6b1f2b]"
+            className="font-display text-xl font-semibold leading-snug text-balance tracking-[-0.01em] transition-colors duration-200 group-hover:text-[#6b1f2b]"
             style={{ color: '#1c1410' }}
           >
             {recipe.title}
