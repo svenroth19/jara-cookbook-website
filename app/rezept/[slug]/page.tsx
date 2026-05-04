@@ -174,7 +174,7 @@ export default async function RecipePage({ params }: RecipePageProps) {
 
         {/* Title */}
         <h1
-          className="font-display text-center font-bold leading-[1.1] tracking-[-0.02em] text-[#6b1f2b]"
+          className="font-display text-center font-semibold italic leading-[1.15] tracking-[0.01em] text-[#6b1f2b]"
           style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)' }}
         >
           {typedRecipe.title}
@@ -195,7 +195,7 @@ export default async function RecipePage({ params }: RecipePageProps) {
             {section.type === 'ingredients' && (
               <div>
                 <h2
-                  className="font-display mb-6 text-[1.75rem] font-semibold tracking-[-0.01em]"
+                  className="font-display mb-6 text-[1.75rem] font-semibold tracking-[0.01em]"
                   style={{ color: '#1c1410' }}
                 >
                   Zutaten
@@ -222,7 +222,7 @@ export default async function RecipePage({ params }: RecipePageProps) {
             {section.type === 'instructions' && (
               <div>
                 <h2
-                  className="font-display mb-6 text-[1.75rem] font-semibold tracking-[-0.01em]"
+                  className="font-display mb-6 text-[1.75rem] font-semibold tracking-[0.01em]"
                   style={{ color: '#1c1410' }}
                 >
                   Zubereitung
